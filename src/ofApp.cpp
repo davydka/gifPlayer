@@ -43,6 +43,14 @@ void ofApp::setup(){
 		currentVideoDirectory.listDir();
 		vector<ofFile> files = currentVideoDirectory.getFiles();
 
+		if(!currentVideoDirectory.size()){
+			std::cout<<"******"<<std::endl;
+			std::cout<<"******"<<std::endl;
+			ofLogError() << "currentVideoDirectory: " << currentVideoDirectory.path() << " EMPTY";
+			std::cout<<"******"<<std::endl;
+			std::cout<<"******"<<std::endl;
+		}
+
 		for(int i = 0; i < currentVideoDirectory.size(); i++){
 			ofLogNotice(currentVideoDirectory.getPath(i));
 			ofVideoPlayer* player = new ofVideoPlayer();
@@ -56,7 +64,11 @@ void ofApp::setup(){
 			videosHolder[i] = player;
 		}
 	} else {
+		std::cout<<"******"<<std::endl;
+		std::cout<<"******"<<std::endl;
 		ofLogError() << "currentVideoDirectory: " << currentVideoDirectory.path() << " MISSING";
+		std::cout<<"******"<<std::endl;
+		std::cout<<"******"<<std::endl;
 	}
 	
 
